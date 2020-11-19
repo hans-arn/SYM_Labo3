@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Labo03</string>
+    <string name="ibeacons">iBeacons</string>
+    <string name="codes_barres">Codes-barres</string>
+    <string name="nfc">NFC</string>
+    <string name="mail">Mail</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign In</string>
+</resources>

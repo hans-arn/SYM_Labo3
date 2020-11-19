@@ -25,12 +25,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         codeBarres.setOnClickListener{
-            intent = Intent(this, Nfc::class.java)
+            intent = Intent(this, codeBarres::class.java)
             startActivity(intent)
         }
 
         nfc.setOnClickListener{
-            intent = Intent(this, codeBarre::class.java)
+            intent = Intent(this, Nfc::class.java)
             startActivity(intent)
         }
 

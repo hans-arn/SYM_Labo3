@@ -16,3 +16,15 @@ Cependant, l'utilisation de NFC ou de IBeacon dépend surtout du context et de l
 - Dans le cas d'un jeu en public, par exemple un bingo ou un quiz, l'utilisation d'un IBeacon est plus intéressante pour permettre à toutes les personnes dans une salle d'accéder au jeu sur leurs téléphones afin d'en faciliter l'usage. Alors qu'avec la technologie NFC à cause de sa faible portée, il faudrait passer avant un par un à une borne.
 
 On remarque alors que IBeacon n'est pas une alternative mais plutôt une solution complémentaire à NFC. L'une étant plus adapté que l'autre et inversement selon les cas d'utilisation.
+
+## NFC
+
+> Dans la manipulation ci-dessus, les tags NFC utilisés contiennent 4 valeurs textuelles codées en UTF-8dans un format de message NDEF. Une personne malveillante ayant accès au porte-clés peut aisément copier les valeurs stockées dans celui-ci et les répliquer sur une autre puce NFC.
+
+
+
+> A partir de l’API Android concernant les tags NFC3, pouvez-vous imaginer une autre approche pour  rendre  plus  compliqué  le  clonage  des  tags  NFC? Existe-il  des  limitations? Voyez-vous d’autres possibilités?
+
+
+
+> Est-ce qu’une solution basée sur la vérification de la présence d’un iBeacon sur l’utilisateur, par exemple sous la forme d’un porte-clés serait préférable? Veuillez en discuter

@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         nfc.setOnClickListener{
-            intent = Intent(this, Nfc::class.java)
+            intent = Intent(this, NfcReader::class.java)
             startActivity(intent)
         }
 

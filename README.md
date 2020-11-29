@@ -9,9 +9,9 @@ Les IBeacons et NFC sont des systèmes de localisation intérieur qui peuvent ê
 
 Cependant, l'utilisation de NFC ou de IBeacon dépend surtout du context et de l'action.  En effet, nous allons voir 3 cas d'utilisations et expliquer pourquoi malgré ce qui est avancé IBeacon n'est pas une alternative mais est plus complémentaire.
 
-- Dans le cas de e-payement, les applications utilisant les IBeacons sont souvent peu sécurisé et NFC est considéré comme une meilleur technique. NFC demande à l'utilisateur d'être très proche du système, il propose un système de chiffrage des données et même un système de sessions sécurisées. Avec les IBeacon, une personne mal attentionné est plus susceptible de pouvoir récupérer l'échange de message de payement, il peut aussi hacker un IBeacon pour modifier son UUID, majeur et mineur et détourner le système.
+- Dans le cas de e-payement, les applications utilisant les IBeacons sont souvent peu sécurisé et NFC est considéré comme une meilleur technique. NFC demande à l'utilisateur d'être très proche du système, il propose un système de chiffrement des données et même un système de sessions sécurisées. Avec les IBeacon, une personne mal attentionné est plus susceptible de pouvoir récupérer l'échange de message de payement, il peut aussi hacker un IBeacon pour modifier son UUID, majeur et mineur et détourner le système.
 
-- Dans le cas d'un arrêt de bus, cependant l'utilisation de IBeacon est beaucoup plus adapté. Pas besoin de scanner une borne NFC qui ne pourrait fournir qu'une information intangible. Les IBeacons pourraient agir sur la région autour de l'arrêt (un périmètre de 15 mètres autour par exemple) mais en plus s'adapter aux problèmes de trafic car ses données sont modifiables.
+- Dans le cas d'un arrêt de bus, l'utilisation de IBeacon est beaucoup plus adapté. Pas besoin de scanner une borne NFC qui ne pourrait fournir qu'une information intangible. Les IBeacons pourraient agir sur la région autour de l'arrêt (un périmètre de 15 mètres autour par exemple) mais en plus s'adapter aux problèmes de trafic car ses données sont modifiables.
 
 - Dans le cas d'un jeu en public, par exemple un bingo ou un quiz, l'utilisation d'un IBeacon est plus intéressante pour permettre à toutes les personnes dans une salle d'accéder au jeu sur leurs téléphones afin d'en faciliter l'usage. Alors qu'avec la technologie NFC à cause de sa faible portée, il faudrait passer avant un par un à une borne.
 
@@ -19,12 +19,20 @@ On remarque alors que IBeacon n'est pas une alternative mais plutôt une solutio
 
 ## NFC
 
-> Dans la manipulation ci-dessus, les tags NFC utilisés contiennent 4 valeurs textuelles codées en UTF-8dans un format de message NDEF. Une personne malveillante ayant accès au porte-clés peut aisément copier les valeurs stockées dans celui-ci et les répliquer sur une autre puce NFC.
+> Dans la manipulation ci-dessus, les tags NFC utilisés contiennent 4 valeurs textuelles codées en UTF-8dans un format de message NDEF. Une personne malveillante ayant accès au porte-clés peut aisément copier les valeurs stockées dans celui-ci et les répliquer sur une autre puce NFC. A partir de l’API Android concernant les tags NFC3, pouvez-vous imaginer une autre approche pour  rendre  plus  compliqué  le  clonage  des  tags  NFC? Existe-il  des  limitations? Voyez-vous d’autres possibilités?
+
+- On pourrait imaginer une sorte d'authentification numérique des données sur le TAG mais cela ne serait malheureusement pas une bonne idée car un attaquant avec du matériel adéquat peut quand même copier **toutes** les données sur le TAG pour les cloner. 
+
+-  Une autre alternatives aux TAG NFC serait d'utiliser une smartcard qui possède un chiffrement asymétrique sur les données inscrites sur la carte. Et ainsi lorsqu'on lirait le support il faudrait entré un mot de passe pour avoir accès aux données. Mais cela n'est valable que si on travaille avec des écrans et qu'on a la possibilité de pouvoir entré la clé asymétrique. 
+
+  Une autre méthode est d'utilisé des supports qui utilisent une communication chiffrée avec le périphérique. Mais le problème, pour que cela soit transparent pour l'utilisateur, est qu'il faudrait stocker la clé de déchiffrement sur le téléphone. Si l'attaquant a compromis ce dernier, nous retomberons sur le même problème.
 
 
 
-> A partir de l’API Android concernant les tags NFC3, pouvez-vous imaginer une autre approche pour  rendre  plus  compliqué  le  clonage  des  tags  NFC? Existe-il  des  limitations? Voyez-vous d’autres possibilités?
-
-
+Mais dans ce projet, le fait qu'un attaquant possède un clone de notre tag ne compromet pas totalement notre infrastructure car nous avons une authentification   
 
 > Est-ce qu’une solution basée sur la vérification de la présence d’un iBeacon sur l’utilisateur, par exemple sous la forme d’un porte-clés serait préférable? Veuillez en discuter
+
+- Cela pourrait être une bonne idée mais le fait est  que si on considère une authentification avec un iBeacon se trouvant dans un périmètre de 15 mètres. Un attaquant pourrait faire un spoofing avec le même ID du iBeacon ce qui reviendrait à le cloner. Cette absence de contact permet aussi de faire des transactions sans que l'utilisateur le sache. 
+
+  Une alternative serait la variante Eddystone de google avec des identifiants éphémère. Mais cela ne serait valable que sur android... 

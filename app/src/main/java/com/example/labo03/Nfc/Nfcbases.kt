@@ -4,12 +4,19 @@ import android.annotation.SuppressLint
 import android.app.PendingIntent
 import android.content.Intent
 import android.content.IntentFilter
+import android.nfc.NdefRecord
 import android.nfc.NfcAdapter
+import android.nfc.Tag
+import android.nfc.tech.Ndef
 import androidx.appcompat.app.AppCompatActivity
+import java.io.UnsupportedEncodingException
+import java.util.*
+import kotlin.experimental.and
 
 open class Nfcbases : AppCompatActivity() {
     lateinit var mNfcAdapter: NfcAdapter
     var isNfcActivited = false
+
     override fun onResume() {
         super.onResume()
         setupForegroundDispatch()
@@ -42,5 +49,25 @@ open class Nfcbases : AppCompatActivity() {
 
     private fun stopForegroundDispatch() {
         mNfcAdapter.disableForegroundDispatch(this)
+    }
+
+    fun handleIntent(intent: Intent): String? {
+        val action = intent.action
+        if (NfcAdapter.ACTION_NDEF_DISCOVERED == action) {
+            val tag: Tag? = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG)
+            val ndefMessage = Ndef.get(tag).cachedNdefMessage
+            val records = ndefMessage.records
+            for (ndefRecord in records) {
+                if (ndefRecord.tnf == NdefRecord.TNF_WELL_KNOWN && Arrays.equals(ndefRecord.type, NdefRecord.RTD_TEXT)) {
+                    try {
+                        val payload = ndefRecord.payload
+                        val languageCodeLength: Byte = payload[0] and 51
+                        // Get the Text
+                        return String(payload, languageCodeLength + 1, payload.size - languageCodeLength - 1)
+                    } catch (e: UnsupportedEncodingException) { }
+                }
+            }
+        }
+        return null
     }
 }

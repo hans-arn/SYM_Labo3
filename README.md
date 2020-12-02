@@ -51,3 +51,18 @@ Avec plus de 500 caractères, le QR-code devient de plus en plus complexe à lir
 
 > Il existe de très nombreux services sur Internet permettant de générer des QR-codes dynamiques. Veuillez expliquer ce que sont les QR-codes dynamiques. Quels sont les avantages et respectivement les inconvénients à utiliser ceux-ci en comparaison avec des QR-codes statiques. Vous adapterez votre réponse à une utilisation depuis une plateforme mobile.
 
+Les QR-codes dynamiques sont des QR-codes dont le contenu peut être modifié sans avoir à remodifier le dessin déjà créé comme pour les QR-codes statiques. Par exemple, on peut y inscrire un lien pour rediriger un utilisateur scannant le motif, mais même si l'on décidait de modifier ce lien, le motif resterait le même en redirigerait l'utilisateur vers le nouveau lien.
+
+
+
+**Avantages:**
+
+- Souvent plus petits et donc plus facile à scanner par un appareil mobile
+- Correction d'erreurs ou modification du contenu possible
+- Possibilité de traquer qui se connecte, depuis où et en extraire des informations pour des statistiques
+
+
+
+**Désavantages:**
+
+- Il faut une connexion internet sur le mobile afin de pouvoir rediriger une personne et ce n'est pas forcément le cas de tout le monde

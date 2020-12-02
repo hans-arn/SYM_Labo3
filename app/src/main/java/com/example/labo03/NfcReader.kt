@@ -18,11 +18,13 @@ class NfcReader : Nfcbases() {
     private lateinit var password       : EditText
     private lateinit var text           : TextView
 
+    // stockage des credentials
     private val credentials = mutableListOf(
             Pair("jerome","1234")
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // initialisation de l'activité
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nfc)
         mTextView = findViewById(R.id.textView_explanation)
@@ -40,8 +42,9 @@ class NfcReader : Nfcbases() {
             mTextView.setText("NFC is disabled.")
         }
 
+        // si l'utilisateur clique sur le bouton et que le tag a été scanné on passe à la prochaine activité
         mButton.setOnClickListener {
-            if (credentials.contains(Pair(email.text.toString(), password.text.toString())) and isNfcActivited) {
+            if (credentials.contains(Pair(email.text.toString(), password.text.toString())) and isTagScanned) {
                 intent = Intent(this, NfcSecurity::class.java)
                 startActivity(intent)
             }
@@ -54,8 +57,10 @@ class NfcReader : Nfcbases() {
         if (intent != null) {
             val result = handleIntent(intent)
             if (result.equals( "test")) {
-                isNfcActivited = true
+                isTagScanned = true
+                // change la couleur du bouton pour montrer à l'utilisateur le scan du tag
                 mButton.setBackgroundColor(Color.GREEN);
+                // active le bouton
                 mButton.isEnabled = true
             }
         };

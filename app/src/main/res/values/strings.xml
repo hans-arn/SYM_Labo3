@@ -10,4 +10,5 @@
     <string name="maximum_security">Maximum Security</string>
     <string name="medium_security">Medium Security</string>
     <string name="minimum_security">Minimum Security</string>
+    <string name="scan_bar">Scan Bar</string>
 </resources>

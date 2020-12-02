@@ -36,3 +36,18 @@ Mais dans ce projet, le fait qu'un attaquant possède un clone de notre tag ne c
 - Cela pourrait être une bonne idée mais le fait est  que si on considère une authentification avec un iBeacon se trouvant dans un périmètre de 15 mètres. Un attaquant pourrait faire un spoofing avec le même ID du iBeacon ce qui reviendrait à le cloner. Cette absence de contact permet aussi de faire des transactions sans que l'utilisateur le sache. 
 
   Une alternative serait la variante Eddystone de google avec des identifiants éphémère. Mais cela ne serait valable que sur android... 
+
+
+
+## Codes-barres
+
+> Quelle est la quantité maximale de données pouvant être stockée sur un QR-code ? Veuillez expérimenter, avec le générateur conseillé de codes-barres (QR), de générer différentes tailles de QR-codes. Pensez-vous qu’il est envisageable d’utiliser confortablement des QRcodes complexes (par exemple du contenant >500 caractères de texte ou une vCard très complète) ?
+
+En faisant des recherches, ce [site](http://qrcode.meetheed.com/question3.php) nous indique qu'un QR-code peut contenir jusqu'à 3kB. 
+
+Avec plus de 500 caractères, le QR-code devient de plus en plus complexe à lire pour une appareil photo. J'ai effectué une tentative avec 1000 caractères et le scan fonctionnait encore, mais arrivé à 2000, ça ne fonctionnait plus. Ayant un appareil photo plutôt récent, ce qui n'est certainement pas le cas de tout le monde, il n'est pas envisageable d'utiliser un QR-code avec autant de caractères.
+
+
+
+> Il existe de très nombreux services sur Internet permettant de générer des QR-codes dynamiques. Veuillez expliquer ce que sont les QR-codes dynamiques. Quels sont les avantages et respectivement les inconvénients à utiliser ceux-ci en comparaison avec des QR-codes statiques. Vous adapterez votre réponse à une utilisation depuis une plateforme mobile.
+

@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         codeBarres.setOnClickListener{
-            intent = Intent(this, codeBarres::class.java)
+            intent = Intent(this, CodeBarre::class.java)
             startActivity(intent)
         }
 

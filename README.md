@@ -27,9 +27,7 @@ On remarque alors que IBeacon n'est pas une alternative mais plutôt une solutio
 
   Une autre méthode est d'utilisé des supports qui utilisent une communication chiffrée avec le périphérique. Mais le problème, pour que cela soit transparent pour l'utilisateur, est qu'il faudrait stocker la clé de déchiffrement sur le téléphone. Si l'attaquant a compromis ce dernier, nous retomberons sur le même problème.
 
-
-
-Mais dans ce projet, le fait qu'un attaquant possède un clone de notre tag ne compromet pas totalement notre infrastructure car nous avons une authentification   
+Mais dans ce projet, le fait qu'un attaquant possède un clone de notre tag ne compromet pas totalement notre infrastructure car nous avons une authentification   par mot de passe. 
 
 > Est-ce qu’une solution basée sur la vérification de la présence d’un iBeacon sur l’utilisateur, par exemple sous la forme d’un porte-clés serait préférable? Veuillez en discuter
 

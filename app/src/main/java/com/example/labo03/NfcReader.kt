@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import com.example.labo03.Nfc.Nfcbases
+import java.util.*
 
 class NfcReader : Nfcbases() {
     private lateinit var mTextView      : TextView
@@ -39,13 +40,14 @@ class NfcReader : Nfcbases() {
 
         // test si le NFC est activé ou non
         if (!mNfcAdapter.isEnabled) {
-            mTextView.setText("NFC is disabled.")
+            mTextView.text = "NFC is disabled."
         }
 
         // si l'utilisateur clique sur le bouton et que le tag a été scanné on passe à la prochaine activité
         mButton.setOnClickListener {
             if (credentials.contains(Pair(email.text.toString(), password.text.toString())) and isTagScanned) {
                 intent = Intent(this, NfcSecurity::class.java)
+                intent.putExtra("scan", lastScan)
                 startActivity(intent)
             }
         }
@@ -62,6 +64,7 @@ class NfcReader : Nfcbases() {
                 mButton.setBackgroundColor(Color.GREEN);
                 // active le bouton
                 mButton.isEnabled = true
+                lastScan = Calendar.getInstance().getTime().time
             }
         };
     }

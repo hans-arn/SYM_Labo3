@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import java.io.UnsupportedEncodingException
 import java.util.*
 import kotlin.experimental.and
+import kotlin.properties.Delegates
 
 /**
  * Classe de base pour l'inscription et désinscription aux event NFC selon les codes donnés dans la
@@ -21,6 +22,7 @@ open class Nfcbases : AppCompatActivity() {
     lateinit var mNfcAdapter: NfcAdapter
     // pour savoir si le tag a été scanné
     var isTagScanned = false
+    var lastScan by Delegates.notNull<Long>()
 
     /**
      * donné dans la donnée

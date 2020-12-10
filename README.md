@@ -1,6 +1,6 @@
 ## Balises IBeacon
 
-### Les IBeacons sont très souvent présentés comme une alternative à NFC. Vous commenterez cette affirmation en vous basant sur 2-3 exemples de cas d'utilisation concrets.
+> Les IBeacons sont très souvent présentés comme une alternative à NFC. Vous commenterez cette affirmation en vous basant sur 2-3 exemples de cas d'utilisation concrets.
 
 Les IBeacons et NFC sont des systèmes de localisation intérieur qui peuvent être utiliser dans de nombreux domaines que ce soit dans le e-payements, l'authentification à double facteur... Les IBeacons ont été présenté comme une alternative à la technologie NFC, en effet ils ont des avantages indéniables:
 
